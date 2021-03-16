@@ -31,7 +31,13 @@
           fxLayoutAlign="space-evenly center"
         ></div>
         <div fxFlex="20" fxLayout="column" fxLayoutAlign="space-evenly center">
-          <button *ngIf="display" @fadeOut mat-button color="primary" (click)='getIp()'>
+          <button
+            *ngIf="display"
+            @fadeOut
+            mat-button
+            color="primary"
+            (click)="getIp()"
+          >
             <mat-icon>fingerprint</mat-icon>
           </button>
         </div>
@@ -47,10 +53,35 @@
           fxLayout="column"
           fxLayoutAlign="space-evenly center"
         ></div>
-        <div *ngIf="!display" @fadeIn fxFlex="30" fxLayout="column" fxLayoutAlign="space-evenly center">
+        <div
+          *ngIf="error"
+          @fadeInOut
+          fxFlex="30"
+          fxLayout="column"
+          fxLayoutAlign="space-evenly center"
+        >
+          <h2>
+            Une erreur est survenue lors de la récupération de votre IP.
+            Veuillez désactiver addBlock et réessayer
+          </h2>
+        </div>
+        <div
+          *ngIf="!display"
+          @fadeIn
+          fxFlex="30"
+          fxLayout="column"
+          fxLayoutAlign="space-evenly center"
+        >
           <p>Votre adresse ip est :</p>
-          <p id="ip">{{ipUser$}}</p>
-          <button *ngIf="!display" @fadeOut mat-button color="primary" [cdkCopyToClipboard]="ipUser$" matTooltip="copier">
+          <h2>{{ ipUser$ }}</h2>
+          <button
+            *ngIf="!display"
+            @fadeOut
+            mat-button
+            color="primary"
+            [cdkCopyToClipboard]="ipUser$"
+            matTooltip="copier"
+          >
             <mat-icon>content_copy</mat-icon>
           </button>
         </div>
@@ -58,8 +89,7 @@
           fxFlex="30"
           fxLayout="column"
           fxLayoutAlign="space-evenly center"
-        >
-        </div>
+        ></div>
       </div>
     </div>
   </body>
