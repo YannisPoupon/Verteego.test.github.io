@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div fxLayout="column" class="main">
+      <div fxFlex="20" fxLayout="row"></div>
+      <div fxFlex="5" fxLayout="row" fxLayoutAlign="space-between center">
+        <div
+          fxFlex="20"
+          fxLayout="column"
+          fxLayoutAlign="space-evenly center"
+        ></div>
+        <div fxFlex="20" fxLayout="column" fxLayoutAlign="space-evenly center">
+          <p>Cliquez afin de récupérer votre IP</p>
+        </div>
+        <div
+          fxFlex="20"
+          fxLayout="column"
+          fxLayoutAlign="space-evenly center"
+        ></div>
+      </div>
+      <div fxFlex="10" fxLayout="row" fxLayoutAlign="space-between center">
+        <div
+          fxFlex="20"
+          fxLayout="column"
+          fxLayoutAlign="space-evenly center"
+        ></div>
+        <div fxFlex="20" fxLayout="column" fxLayoutAlign="space-evenly center">
+          <button *ngIf="display" @fadeOut mat-button color="primary" (click)='getIp()'>
+            <mat-icon>fingerprint</mat-icon>
+          </button>
+        </div>
+        <div
+          fxFlex="20"
+          fxLayout="column"
+          fxLayoutAlign="space-evenly center"
+        ></div>
+      </div>
+      <div fxFlex="20" fxLayout="row" fxLayoutAlign="space-between center">
+        <div
+          fxFlex="30"
+          fxLayout="column"
+          fxLayoutAlign="space-evenly center"
+        ></div>
+        <div *ngIf="!display" @fadeIn fxFlex="30" fxLayout="column" fxLayoutAlign="space-evenly center">
+          <p>Votre adresse ip est :</p>
+          <p id="ip">{{ipUser$}}</p>
+          <button *ngIf="!display" @fadeOut mat-button color="primary" [cdkCopyToClipboard]="ipUser$" matTooltip="copier">
+            <mat-icon>content_copy</mat-icon>
+          </button>
+        </div>
+        <div
+          fxFlex="30"
+          fxLayout="column"
+          fxLayoutAlign="space-evenly center"
+        >
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
